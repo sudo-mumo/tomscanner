@@ -15,4 +15,7 @@
     <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">?android:colorBackground</item>
     </style>
+    <color name="launcher_background">#ffffff</color>
+    <!-- <color name="launcher_background">#2196ff</color> -->
+    
 </resources>

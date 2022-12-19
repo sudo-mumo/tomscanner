@@ -10,15 +10,12 @@ class ToolsPage extends StatefulWidget {
 class _ToolsPageState extends State<ToolsPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Text(
-          'Tools Page',
-        ),
+    return const Center(
+      // Center is a layout widget. It takes a single child and positions it
+      // in the middle of the parent.
+      child: Text(
+        'Tools Page',
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

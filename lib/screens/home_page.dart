@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:tomscanner/widgets/navigation_box.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,6 +14,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    XFile? photo;
+    bool image = false;
     return Center(
       child: SafeArea(
         child: Column(
@@ -100,17 +104,56 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Stack(children: <Widget>[
                   Positioned(
-                      bottom: 20,
-                      right: 20,
-                      child: FloatingActionButton(
-                        onPressed: () async {
-                          final ImagePicker _picker = ImagePicker();
-                          final XFile? photo = await _picker.pickImage(
-                              source: ImageSource.camera);
-                          // setState(() {});
-                        },
-                        child: const Icon(Icons.camera),
-                      ))
+                    bottom: 20,
+                    right: 20,
+                    child: FloatingActionButton(
+                      onPressed: () async {
+                        final ImagePicker picker = ImagePicker();
+                        image = true;
+                        photo =
+                            await picker.pickImage(source: ImageSource.camera);
+                        image = true;
+                      },
+                      child: const Icon(Icons.camera),
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    left: 20,
+                    child: GestureDetector(
+                      onDoubleTap: () {
+                        image = true;
+                        print(image);
+                      },
+                      child: Container(
+                        height: 400,
+                        width: 400,
+                        // color: Colors.red,
+                        child: image == false
+                            ? Container(
+                                height: 400,
+                                width: 400,
+                                color: Colors.blue,
+                              )
+                            : Image.file(
+                                (File(photo!.path)),
+                                height: 300,
+                                width: 300,
+                                color: Colors.red,
+                              ),
+                      ),
+                    ),
+
+                    // ? Image.file(
+                    //     (File(photo!.path)),
+                    //     height: 300,
+                    //     width: 300,
+                    //     color: Colors.red,
+                    //   )
+                    // Container(
+                    //     color: Colors.red,
+                    //   ),
+                  ),
                 ]),
               ),
             )
